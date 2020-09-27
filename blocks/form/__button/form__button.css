@@ -1,0 +1,20 @@
+.form__button {
+  width: 238px;
+  height: 46px;
+  align-self: center;
+  background-color: black;
+  color: white;
+  border: none;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+
+.form__button:hover {
+  opacity: .7;
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+.form__name {
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid grey;
+  max-width: 238px;
+  height: 27px;
+  align-self: center;
+}

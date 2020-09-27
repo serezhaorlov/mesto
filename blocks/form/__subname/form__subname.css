@@ -1,0 +1,10 @@
+.form__subname {
+  margin-bottom: 45px;
+  border: none;
+  border-bottom: 1px solid grey;
+  max-width: 238px;
+  height: 27px;
+
+  align-self: center;
+
+}
