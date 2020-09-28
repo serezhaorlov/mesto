@@ -1,4 +1,6 @@
 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 45px 199px 40px;
   border-bottom-width: 1px;

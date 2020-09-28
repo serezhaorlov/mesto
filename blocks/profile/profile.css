@@ -1,4 +1,6 @@
 .profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 0 199px 50px;
   position: relative;
@@ -7,7 +9,10 @@
 
 @media screen and (max-width: 768px) {
   .profile {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 50%;
   }
 }
@@ -16,7 +21,9 @@
   .profile {
     margin: 0 19px 50px;
     width: 79%;
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
   }
 }
 

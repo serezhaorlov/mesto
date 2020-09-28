@@ -5,7 +5,8 @@
   margin-left: 17px;
   background-color: #000000;
   border: 1px solid #ffffff;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   cursor: pointer;
   background: url(../../../images/editButton.svg);
   background-position: center;

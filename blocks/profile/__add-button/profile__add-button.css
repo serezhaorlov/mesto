@@ -4,7 +4,8 @@
   margin: 18px 0 35px 246px;
   background-color: #000000;
   border: 1px solid #ffffff;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   cursor: pointer;
   background: url(../../../images/addButton.svg);
   background-position: center;

@@ -8,6 +8,10 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
-  align-self: center;
-  justify-content: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }

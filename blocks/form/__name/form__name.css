@@ -11,6 +11,8 @@
   .form__name {
     max-width: 238px;
     height: 27px;
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
   }
 }

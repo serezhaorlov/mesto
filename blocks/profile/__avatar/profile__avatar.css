@@ -9,14 +9,18 @@
 
 @media screen and (max-width: 768px) {
   .profile__avatar {
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     margin:0;
   }
 }
 
 @media screen and (max-width: 425px) {
   .profile__avatar {
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     margin:0;
   }
 }
