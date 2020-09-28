@@ -1,10 +1,19 @@
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: white;
   align-self: center;
-  width: 282px;
-  height: 322px;
+  width: 430px;
+  height: 330px;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+@media screen and (max-width: 425px) {
+  .form {
+    width: 282px;
+    height: 322px;
+  }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <title>Сайт о путешествиях по России</title>
+  <title>Социальная сеть Mesto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
@@ -18,15 +18,18 @@
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__sub-info">Исследователь океана</p>
         </div>
-        <button class="profile__edit-button"></button>
+        <button class="profile__edit-button"></button> <!--могу сверстать через див внутри блока profile__info вместо позиционирования, ибо не ясно как правильно(-->
         <button class="profile__add-button"></button>
       </section>
-      <form class="form">
-        <h2 class="form__heading">Редактировать профиль</h2>
-        <input type="text" id="comment" name="name" value="" placeholder="Введите имя" class="form__name">
-        <input type="text" id="comment" name="comment" value="" placeholder="Введите род деятельности" class="form__subname">
-        <input type="submit" value="Сохранить" class="form__button">
-      </form>
+      <section class="popup">
+          <form class="form">
+            <h2 class="form__heading">Редактировать профиль</h2>
+            <input type="text" id="comment" name="name" value="Жак-Ив Кусто" placeholder="Имя" class="form__name">
+            <input type="text" id="comment" name="comment" value="Исследователь океана" placeholder="О себе" class="form__subname">
+            <input type="submit" value="Сохранить" class="form__button">
+            <img src="./images/closeIcon.svg" alt="иконка_закрыть" class="form__close-button">
+          </form>
+      </section>
       <section class="elements">
         <div class="elements__item">
           <img src="./images/karachaevs.png" alt="" class="elements__pic">
@@ -76,5 +79,6 @@
       <p class="footer__copyright"> &copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
