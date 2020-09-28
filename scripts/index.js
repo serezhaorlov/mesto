@@ -9,6 +9,13 @@ let popUpToggle = () => {
 popUpOpenButton.addEventListener("click", popUpToggle);
 popUpCloseButton.addEventListener("click", popUpToggle);
 
+let saveButtonPopUpClose = document.querySelector('.form__button')
+
+let popUpClose = () => {
+  popUp.classList.remove("popup_is-opened");
+}
+saveButtonPopUpClose.addEventListener("click", popUpClose);
+
 let formElement = document.querySelector('.form');
 
 function formSubmitHandler (evt) {
@@ -24,3 +31,5 @@ function formSubmitHandler (evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+
+
