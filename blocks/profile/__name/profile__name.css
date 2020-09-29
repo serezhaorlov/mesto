@@ -9,7 +9,7 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
+  /*white-space: nowrap;*/ /*закомментировал пока, потому что выходит не круто, когда символов больше становится выглядит не очень(*/
 }
 
 
