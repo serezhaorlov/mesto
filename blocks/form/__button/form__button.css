@@ -7,17 +7,18 @@
   background-color: black;
   color: white;
   border: none;
-  font-family: Inter;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
+  margin-bottom: 36px;
 }
 
 
 .form__button:hover {
-  opacity: .7;
+  opacity: .8;
   cursor: pointer;
 }
 

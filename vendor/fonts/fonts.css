@@ -16,11 +16,12 @@
 
 @font-face {
   font-family: 'Inter';
-  font-style:  700;
+  font-style:  500;
   font-weight: bold;
-  font-display: swap;
-  src: url(./Inter-Bold.woff2) format("woff2"),
-       url(./Inter-Bold.woff) format("woff");
+  src: url(./Inter-Medium.woff2) format("woff2"),
+       url(./Inter-Medium.woff) format("woff"); /*подключил другой шрифт*/
 }
+
+
 
 
