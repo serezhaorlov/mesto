@@ -10,6 +10,14 @@
 
 
 
+
+
+@media screen and (max-width: 926px) {
+  .elements {
+    margin: 0 0 66px 170px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .elements {
     margin: 0 0 66px 89px;
