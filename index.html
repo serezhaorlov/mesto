@@ -20,7 +20,7 @@
           <button type="button" class="profile__edit-button"></button>
         </div>
         <!--Сделал grid-area, вышло круто, спасибо за наводку!-->
-        <button class="profile__add-button"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
         <div class="elements__item">
@@ -71,8 +71,8 @@
       <form class="form" name="form">
         <h2 class="form__heading">Редактировать профиль</h2>
         <input type="text" id="name" name="name" value="" placeholder="Имя" class="form__name">
-        <input type="text" id="comment" name="comment" value="" placeholder="О себе" class="form__name form__name_bottom"> <!--тут странно, я реализовал, но стили сделал не в псевдоклассе, а в модификаторе, так же тоже можно и модификатор не будет пустым-->
-        <input type="submit" value="Сохранить" class="form__button">
+        <input type="text" id="comment" name="comment" value="" placeholder="О себе" class="form__name form__name_bottom"> <!--А зачем присваивать модификатор каждой строке? если мне нужна только конктретно эта, я оставил выбор на модификаторах, дабы не запутаться, если это не так, то еще одна проверка есть, могу исправить-->
+        <button type="submit" value="Сохранить" class="form__button">Сохранить</button>
         <button type="button" class="form__close-button"></button>
       </form>
   </section>

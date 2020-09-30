@@ -23,12 +23,11 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileSubInfo.textContent = jobInput.value;
+    popUpToggle(); //вышло кайфово 8)
 }
-
 
 popUpOpenButton.addEventListener("click", popUpToggle);
 popUpCloseButton.addEventListener("click", popUpToggle);
-saveButtonPopUpClose.addEventListener("click", popUpToggle);
 formElement.addEventListener('submit', formSubmitHandler);
 
 
