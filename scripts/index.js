@@ -14,7 +14,7 @@ let profileSubInfo = document.querySelector('.profile__sub-info');
 let popUpToggle = () => {
   popUp.classList.toggle("popup_is-opened");
   if (popUp.classList.contains("popup_is-opened")){
-    nameInput.value = profileName.textContent; //подправил, теперь данные передаются из name в форму
+    nameInput.value = profileName.textContent;
     jobInput.value = profileSubInfo.textContent;
   }
 }

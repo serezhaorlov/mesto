@@ -19,10 +19,9 @@
           <p class="profile__sub-info">Исследователь океана</p>
           <button type="button" class="profile__edit-button"></button>
         </div>
-        <!--Сделал grid-area, вышло круто, спасибо за наводку!-->
         <button type="button" class="profile__add-button"></button>
       </section>
-      <section class="elements">
+      <section class="elements"> <!--Добавил чуть больше брейкпоинтов, чтобы было сглаженней, думаю можно было сделать через margin:auto и, задав width менять в брейкпоинтах width, но особо разницы тоже нет вроде)-->
         <div class="elements__item">
           <img src="./images/karachaevs.png" alt="Карачаевск" class="elements__pic">
           <div class="elements__container">
@@ -71,7 +70,7 @@
       <form class="form" name="form">
         <h2 class="form__heading">Редактировать профиль</h2>
         <input type="text" id="name" name="name" value="" placeholder="Имя" class="form__name">
-        <input type="text" id="comment" name="comment" value="" placeholder="О себе" class="form__name form__name_bottom"> <!--А зачем присваивать модификатор каждой строке? если мне нужна только конктретно эта, я оставил выбор на модификаторах, дабы не запутаться, если это не так, то еще одна проверка есть, могу исправить-->
+        <input type="text" id="comment" name="comment" value="" placeholder="О себе" class="form__name form__name_bottom"> <!--А зачем присваивать модификатор каждой строке? если мне нужна только конктретно эта, я оставил выбор на модификаторах, дабы не запутаться, если это не так, то еще одна проверка есть, могу исправить и попытаться сделать выбор атрибута в JS, а не класса..-->
         <button type="submit" value="Сохранить" class="form__button">Сохранить</button>
         <button type="button" class="form__close-button"></button>
       </form>
@@ -83,3 +82,6 @@
   <script src="./scripts/index.js"></script>
 </body>
 </html>
+
+
+<!--По скроллам: у меня из почему-то нет ни на одном из участков в devtools, если девтулзы отключить, и вручную вести ползунок, то тоже ничего не скроллится, как это фиксить? проверил странциу на gh-pages, там тоже без скроллов..-->
