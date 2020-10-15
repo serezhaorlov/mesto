@@ -13,52 +13,6 @@ let PopUpAdd = document.querySelector('.popup-add')
 let addButton = document.querySelector('.profile__add-button')
 let popUpCloseButtonAdd = document.querySelector('.form__close-button_add')
 
-
-const template = document.querySelector('.template');
-const sectionElements = document.querySelector('.elements');
-const elementName = document.querySelector('.form__name_top_add-name');
-const elementPlace = document.querySelector('.form__name_bottom_add-place');
-const popUpSaveButton = document.querySelector('.form__button_add');
-
-
-
-
-
-
-
-
-
-const renderCards = () => {
-  const items = initialCards.map(element => getItems(element)); //
-  sectionElements.append(...items);
-}
-
-
-const pressedLike = (event) => {
-  event.target.closest('.elements__like-button').classList.toggle('.elements__like-button_pressed');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const initialCards = [
   {
       name: 'Архыз',
@@ -87,6 +41,17 @@ const initialCards = [
 ];
 
 
+const template = document.querySelector('.template');
+const sectionElements = document.querySelector('.elements');
+const elementName = document.querySelector('.form__name_top_add-name');
+const elementPlace = document.querySelector('.form__name_bottom_add-place');
+const popUpSaveButton = document.querySelector('.form__button_add');
+
+
+const renderCards = () => {
+  const items = initialCards.map(element => getItems(element));
+  sectionElements.append(...items);
+}
 
 
 
@@ -102,6 +67,9 @@ const getItems = (data) => {
 }
 
 
+const pressedLike = (event) => {
+  event.target.closest('.elements__like-button').classList.toggle('.elements__like-button_pressed');
+}
 
 
 const removeCard = (event) => {
