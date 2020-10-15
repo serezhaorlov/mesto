@@ -1,0 +1,7 @@
+.elements__like-button_pressed {
+  background: url(../../../../images/like-button_pressed.svg);
+}
+
+.elements__like-button_pressed:hover {
+  opacity: .6;
+}
