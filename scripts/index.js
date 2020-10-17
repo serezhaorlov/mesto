@@ -87,9 +87,6 @@ const removeCard = (event) => {
   event.target.closest('.elements__item').remove();
 }
 
-
-
-
 popUpSaveButton.addEventListener('click', (evt) => {
   evt.preventDefault();
     const item = getItems({
@@ -101,7 +98,6 @@ popUpSaveButton.addEventListener('click', (evt) => {
     elementPlace.value = ''
     popUpToggleAdd();
   });
-
 
 let popUpToggle = () => {
   popUp.classList.toggle('popup_is-opened');
