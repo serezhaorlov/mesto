@@ -13,6 +13,17 @@ let PopUpAdd = document.querySelector('.popup-add')
 let addButton = document.querySelector('.profile__add-button')
 let popUpCloseButtonAdd = document.querySelector('.form__close-button_add')
 
+let popUpPic = document.querySelector('.popup-pic');
+let popUpPicCloseButton = document.querySelector('.popup-pic__close-button-pic');
+
+const popUpPicImage = document.querySelector('.popup-pic__image');
+const popUpPicText = document.querySelector('.popup-pic__text');
+
+const template = document.querySelector('.template');
+const sectionElements = document.querySelector('.elements');
+const elementName = document.querySelector('.form__name_top_add-name');
+const elementPlace = document.querySelector('.form__name_bottom_add-place');
+const popUpSaveButton = document.querySelector('.form__button_add');
 
 const initialCards = [
   {
@@ -42,25 +53,10 @@ const initialCards = [
 ];
 
 
-const template = document.querySelector('.template');
-const sectionElements = document.querySelector('.elements');
-const elementName = document.querySelector('.form__name_top_add-name');
-const elementPlace = document.querySelector('.form__name_bottom_add-place');
-const popUpSaveButton = document.querySelector('.form__button_add');
-
-
 const renderCards = () => {
   const items = initialCards.map(element => getItems(element));
   sectionElements.append(...items);
 }
-
-
-let popUpPic = document.querySelector('.popup-pic');
-let popUpPicCloseButton = document.querySelector('.popup-pic__close-button-pic');
-
-const popUpPicImage = document.querySelector('.popup-pic__image');
-const popUpPicText = document.querySelector('.popup-pic__text');
-
 
 const getItems = (data) => {
   const card = template.content.cloneNode(true);
@@ -75,7 +71,6 @@ const getItems = (data) => {
   return card;
 }
 
-
 const popUpTogglePic = (data) => {
   return () => {
     popUpPicImage.src = data.link;
@@ -84,45 +79,45 @@ const popUpTogglePic = (data) => {
   }
 }
 
-
 const pressedLike = (event) => {
   event.target.closest('.elements__like-button').classList.toggle('elements__like-button_pressed');
 }
-
 
 const removeCard = (event) => {
   event.target.closest('.elements__item').remove();
 }
 
-renderCards();
 
 
-  popUpSaveButton.addEventListener('click', (evt) => {
-    evt.preventDefault();
-      const item = getItems({
-        name: elementName.value,
-        link: elementPlace.value
-      });
-      sectionElements.prepend(item);
-      elementName.value = ''
-      elementPlace.value = ''
-      popUpToggleAdd();
+
+popUpSaveButton.addEventListener('click', (evt) => {
+  evt.preventDefault();
+    const item = getItems({
+      name: elementName.value,
+      link: elementPlace.value
     });
+    sectionElements.prepend(item);
+    elementName.value = ''
+    elementPlace.value = ''
+    popUpToggleAdd();
+  });
 
 
-  let popUpToggle = () => {
-    popUp.classList.toggle('popup_is-opened');
-    if (popUp.classList.contains('popup_is-opened')){
-      nameInput.value = profileName.textContent;
-      jobInput.value = profileSubInfo.textContent;
-    }
-
+let popUpToggle = () => {
+  popUp.classList.toggle('popup_is-opened');
+  if (popUp.classList.contains('popup_is-opened')){
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileSubInfo.textContent;
   }
+}
 
-  let popupPicToggle = () => {
-    popUpPic.classList.toggle('popup_is-opened');
+let popUpToggleAdd = () => {
+  PopUpAdd.classList.toggle('popup_is-opened');
+}
 
-  }
+let popUpCloseButoonToggle = () => {
+  popUpPic.classList.toggle('popup_is-opened');
+}
 
 const formSubmitHandler = (evt) => {
     evt.preventDefault();
@@ -131,10 +126,12 @@ const formSubmitHandler = (evt) => {
     popUpToggle();
 }
 
+renderCards();
 
-popUpPicCloseButton.addEventListener('click', popupPicToggle);
-popUpCloseButtonAdd.addEventListener('click', popUpToggle);
-addButton.addEventListener('click', popUpToggle);
+
+popUpPicCloseButton.addEventListener('click', popUpCloseButoonToggle);
+popUpCloseButtonAdd.addEventListener('click', popUpToggleAdd);
+addButton.addEventListener('click', popUpToggleAdd);
 editButton.addEventListener('click', popUpToggle);
 popUpCloseButton.addEventListener('click', popUpToggle);
 formElement.addEventListener('submit', formSubmitHandler);
