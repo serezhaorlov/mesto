@@ -36,8 +36,8 @@
     <section class="popup-add">
       <form class="form" name="form">
         <h2 class="form__heading">Новое место</h2>
-        <input type="text" id="name" name="name" value="" placeholder="Название" class="form__name form__name_top_add-name">
-        <input type="text" id="comment" name="comment" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place">
+        <input type="text" id="name__add" name="name__add" value="" placeholder="Название" class="form__name form__name_top_add-name">
+        <input type="text" id="comment__add" name="comment__add" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place">
         <button type="submit" value="Сохранить" class="form__button form__button_add">Создать</button>
         <button type="button" class="form__close-button form__close-button_add"></button>
       </form>
@@ -45,7 +45,7 @@
   <section class="popup-pic">
     <div class="popup-pic__content-container">
       <button type="button" class="popup-pic__close-button-pic"></button>
-      <img src="" alt="картинка_попап" class="popup-pic__image">
+      <img src="" alt="картинка_попап" class="popup-pic__image"> <!--w3 ругается на отсутствие ссылки, но так и должно быть, у нас пойдет из массива она-->
       <p class="popup-pic__text"></p>
     </div>
   </section>
