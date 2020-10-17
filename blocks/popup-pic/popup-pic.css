@@ -1,4 +1,4 @@
-.popup-add{
+.popup-pic {
     position: fixed;
     top: 0;
     left:0;
@@ -9,11 +9,14 @@
     background-color: rgba(0, 0, 0, 0.5);
     visibility: hidden;
     opacity: 0;
+    flex-direction: column;
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    align-items: center;
+            border: 1px solid red;
 
 }

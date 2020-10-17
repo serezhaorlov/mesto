@@ -19,15 +19,21 @@
 @import url(../blocks/elements/elements.css);
 /*Блок_elements*/
 
+@import url(../blocks/popup-pic/__close-button-pic/popup-pic__close-button-pic.css);
+@import url(../blocks/popup-pic/__text/popup-pic__text.css);
+@import url(../blocks/popup-pic/__image/popup-pic__image.css);
+@import url(../blocks/popup-pic/__content-container.css/popup-pic__content-container.css);
+@import url(../blocks/popup-pic/popup-pic.css);
+
 
 @import url(../blocks/form/__name/_bottom/_add-place/form__name_bottom_add-place.css);
 @import url(../blocks/form/__name/_top/_add-name/form__name_top_add-name.css);
-@import url(../blocks/form/__close-button/_add/form__close-button_add.css);
 @import url(../blocks/popup-add/popup-add.css);
 /*Блок_popup-add + form*/
 
 
 @import url(../blocks/form/__close-button/form__close-button.css);
+@import url(../blocks/form/__close-button/_add/form__close-button_add.css);
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__name/form__name.css);

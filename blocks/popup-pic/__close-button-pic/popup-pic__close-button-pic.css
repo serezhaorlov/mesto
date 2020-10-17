@@ -1,25 +1,27 @@
-.form__close-button {
+.popup-pic__close-button-pic {
   position: absolute;
-  top: -40px;
-  left: 425px;
+  top: -50px;
+  right: -30px;
   padding: 20px;
   background: url(../../../images/closeIcon.svg);
   background-position: center;
   cursor: pointer;
   border: none;
   background-repeat: no-repeat;
+  z-index: 1;
 }
 
-
-.form__close-button:hover {
+.popup-pic__close-button-pic:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 510px) {
-  .form__close-button {
-    top: -40px;
-    left: 270px;
-    padding: 13px;
+  .popup-pic__close-button-pic {
+    padding: 14px;
+    top: -35px;
+
+    right: -30px;
   }
 
 }
+

@@ -13,6 +13,7 @@ let PopUpAdd = document.querySelector('.popup-add')
 let addButton = document.querySelector('.profile__add-button')
 let popUpCloseButtonAdd = document.querySelector('.form__close-button_add')
 
+
 const initialCards = [
   {
       name: 'Архыз',
@@ -54,6 +55,12 @@ const renderCards = () => {
 }
 
 
+let popUpPic = document.querySelector('.popup-pic');
+let popUpPicCloseButton = document.querySelector('.popup-pic__close-button-pic');
+
+const popUpPicImage = document.querySelector('.popup-pic__image');
+const popUpPicText = document.querySelector('.popup-pic__text');
+
 
 const getItems = (data) => {
   const card = template.content.cloneNode(true);
@@ -63,12 +70,23 @@ const getItems = (data) => {
   const likeButton = card.querySelector('.elements__like-button');
   cardDeleteButton.addEventListener('click', removeCard);
   likeButton.addEventListener('click', pressedLike);
+  const picOpenPls = card.querySelector('.elements__pic');
+  picOpenPls.addEventListener('click', popUpTogglePic(data));
   return card;
 }
 
 
+const popUpTogglePic = (data) => {
+  return () => {
+    popUpPicImage.src = data.link;
+    popUpPicText.innerText = data.name;
+    popUpPic.classList.toggle('popup_is-opened');
+  }
+}
+
+
 const pressedLike = (event) => {
-  event.target.closest('.elements__like-button').classList.toggle('.elements__like-button_pressed');
+  event.target.closest('.elements__like-button').classList.toggle('elements__like-button_pressed');
 }
 
 
@@ -101,10 +119,10 @@ renderCards();
 
   }
 
-  let popUpToggleAdd = () => {
-    PopUpAdd.classList.toggle('popup_is-opened');
-  }
+  let popupPicToggle = () => {
+    popUpPic.classList.toggle('popup_is-opened');
 
+  }
 
 const formSubmitHandler = (evt) => {
     evt.preventDefault();
@@ -114,8 +132,9 @@ const formSubmitHandler = (evt) => {
 }
 
 
-popUpCloseButtonAdd.addEventListener('click', popUpToggleAdd);
-addButton.addEventListener('click', popUpToggleAdd);
+popUpPicCloseButton.addEventListener('click', popupPicToggle);
+popUpCloseButtonAdd.addEventListener('click', popUpToggle);
+addButton.addEventListener('click', popUpToggle);
 editButton.addEventListener('click', popUpToggle);
 popUpCloseButton.addEventListener('click', popUpToggle);
 formElement.addEventListener('submit', formSubmitHandler);
