@@ -1,20 +1,20 @@
-let editButton = document.querySelector('.profile__edit-button');
-let popUpCloseButton = document.querySelector('.form__close-button');
-let popUp = document.querySelector('.popup');
+const editButton = document.querySelector('.profile__edit-button');
+const popUpCloseButton = document.querySelector('.form__close-button');
+const popUp = document.querySelector('.popup');
 
-let formElement = document.querySelector('.form');
-let nameInput =  document.querySelector('.form__name_top');
-let jobInput = document.querySelector('.form__name_bottom');
+const formElement = document.querySelector('.form');
+const nameInput =  document.querySelector('.form__name_top');
+const jobInput = document.querySelector('.form__name_bottom');
 
-let profileName = document.querySelector('.profile__name');
-let profileSubInfo = document.querySelector('.profile__sub-info');
+const profileName = document.querySelector('.profile__name');
+const profileSubInfo = document.querySelector('.profile__sub-info');
 
-let PopUpAdd = document.querySelector('.popup-add')
-let addButton = document.querySelector('.profile__add-button')
-let popUpCloseButtonAdd = document.querySelector('.form__close-button_add')
+const PopUpAdd = document.querySelector('.popup-add')
+const addButton = document.querySelector('.profile__add-button')
+const popUpCloseButtonAdd = document.querySelector('.form__close-button_add')
 
-let popUpPic = document.querySelector('.popup-pic');
-let popUpPicCloseButton = document.querySelector('.popup-pic__close-button-pic');
+const popUpPic = document.querySelector('.popup-pic');
+const popUpPicCloseButton = document.querySelector('.popup-pic__close-button-pic');
 
 const popUpPicImage = document.querySelector('.popup-pic__image');
 const popUpPicText = document.querySelector('.popup-pic__text');
@@ -67,17 +67,13 @@ const getItems = (data) => {
   cardDeleteButton.addEventListener('click', removeCard);
   likeButton.addEventListener('click', pressedLike);
   const picOpenPls = card.querySelector('.elements__pic');
-  picOpenPls.addEventListener('click', popUpTogglePic(data));
+  picOpenPls.addEventListener('click', () => {
+    popUpPicImage.src = data.link;
+    popUpPicText.innerText = data.name;
+    openPopup(popUpPic)}); //поправил открытие попапов единой функцией, так прикольней вышло, спасибо!)
   return card;
 }
 
-const popUpTogglePic = (data) => {
-  return () => {
-    popUpPicImage.src = data.link;
-    popUpPicText.innerText = data.name;
-    popUpPic.classList.toggle('popup_is-opened');
-  }
-}
 
 const pressedLike = (event) => {
   event.target.closest('.elements__like-button').classList.toggle('elements__like-button_pressed');
@@ -95,39 +91,35 @@ popUpSaveButton.addEventListener('click', (evt) => {
     });
     sectionElements.prepend(item);
     elementName.value = ''
-    elementPlace.value = ''
-    popUpToggleAdd();
-  });
+    elementPlace.value = '' //здесь странности, карточка сохраняется, но не закрывается попап при применении .reset();
+    openPopup(PopUpAdd);    //планирую узнать в чате группы, может кто сталкивался
+  });                       //вообще насколько я понял, достаточно такой записи: elementName.reset();
+                            //но оно опять же не работает, попробовал еще так elementName.value.reset()
+                            //и elementName.value = elementName.reset(), все тщетно(
 
-let popUpToggle = () => {
+const openPopup = (popUp) => {
   popUp.classList.toggle('popup_is-opened');
-  if (popUp.classList.contains('popup_is-opened')){
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileSubInfo.textContent;
-  }
-}
-
-let popUpToggleAdd = () => {
-  PopUpAdd.classList.toggle('popup_is-opened');
-}
-
-let popUpCloseButoonToggle = () => {
-  popUpPic.classList.toggle('popup_is-opened');
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileSubInfo.textContent; // в прошлом ревью видимо хотели чтобы я попрактиковался с if))
 }
 
 const formSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileSubInfo.textContent = jobInput.value;
-    popUpToggle();
+    openPopup(popUp);
 }
 
 renderCards();
 
 
-popUpPicCloseButton.addEventListener('click', popUpCloseButoonToggle);
-popUpCloseButtonAdd.addEventListener('click', popUpToggleAdd);
-addButton.addEventListener('click', popUpToggleAdd);
-editButton.addEventListener('click', popUpToggle);
-popUpCloseButton.addEventListener('click', popUpToggle);
+
+popUpPicCloseButton.addEventListener('click', () => openPopup(popUpPic));
+popUpCloseButtonAdd.addEventListener('click', () => openPopup(PopUpAdd));
+addButton.addEventListener('click', () => openPopup(PopUpAdd));
+editButton.addEventListener('click',() => openPopup(popUp));
+popUpCloseButton.addEventListener('click',() => openPopup(popUp));
 formElement.addEventListener('submit', formSubmitHandler);
+
+
+
