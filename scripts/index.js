@@ -102,8 +102,8 @@ const formSubmitHandlerAdd = (evt) => {
     link: elementPlace.value
   });
   sectionElements.prepend(item);
-  popUpAdd.querySelector('.form').reset(); //тут сработало обновление формы, но выше из-за submita страница обновляется, хотя не должна.
-  openPopup(popUpAdd);                     //то есть HTML-валидация у меня действительно есть,
+  popUpAdd.querySelector('.form').reset(); //тут сработало обновление формы, немног обыло непонятно с сабмитом, потмоу что при нажатии сайт обновлялся,
+  openPopup(popUpAdd);                     //пофиксил путем навешивания обработчика на popUpAdd, сейчас работает корректно.
 };
 
 renderCards();
