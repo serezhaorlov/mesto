@@ -21,8 +21,8 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-      <section class="elements">
-      </section>
+      <ul class="elements">
+      </ul>
     </main>
     <section class="popup">
       <form class="form" name="form">
@@ -37,7 +37,7 @@
       <form class="form" name="form">
         <h2 class="form__heading">Новое место</h2>
         <input type="text" id="name__add" name="name__add" value="" placeholder="Название" class="form__name form__name_top_add-name">
-        <input type="url" required="required" id="url" name="url" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place" > <!--Валидация так же не срабатывает, я посмотрел спецификацию, но у меня карточка все ранво добавляется с пустыми полями-->
+        <input type="url" required="" id="url" name="url" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place" > <!--Валидация так же не срабатывает, я посмотрел спецификацию, но у меня карточка все ранво добавляется с пустыми полями-->
         <button type="submit" value="Сохранить" class="form__button form__button_add">Создать</button>
         <button type="button" class="form__close-button form__close-button_add"></button>
       </form>
@@ -54,14 +54,14 @@
     </footer>
   </div>
   <template class="template">
-    <div class="elements__item"> <!--Разъясните, пожалуйста, почему необходимо использовать ul?очеьн непонятен этот момент -->
+    <li class="elements__item">
       <img src="" alt="картинка_места" class="elements__pic">
       <button type="button" class="elements__delete-button"></button>
       <div class="elements__container">
         <h2 class="elements__place-name"></h2>
         <button type="button" class="elements__like-button"></button>
       </div>
-    </div>
+    </li>
   </template>
   <script src="./scripts/index.js"></script>
 </body>

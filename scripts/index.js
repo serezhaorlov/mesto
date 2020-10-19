@@ -9,7 +9,7 @@ const jobInput = document.querySelector('.form__name_bottom');
 const profileName = document.querySelector('.profile__name');
 const profileSubInfo = document.querySelector('.profile__sub-info');
 
-const PopUpAdd = document.querySelector('.popup-add')
+const popUpAdd = document.querySelector('.popup-add')
 const addButton = document.querySelector('.profile__add-button')
 const popUpCloseButtonAdd = document.querySelector('.form__close-button_add')
 
@@ -70,10 +70,9 @@ const getItems = (data) => {
   picOpenPls.addEventListener('click', () => {
     popUpPicImage.src = data.link;
     popUpPicText.innerText = data.name;
-    openPopup(popUpPic)}); //поправил открытие попапов единой функцией, так прикольней вышло, спасибо!)
+    openPopup(popUpPic)});
   return card;
 }
-
 
 const pressedLike = (event) => {
   event.target.closest('.elements__like-button').classList.toggle('elements__like-button_pressed');
@@ -83,24 +82,10 @@ const removeCard = (event) => {
   event.target.closest('.elements__item').remove();
 }
 
-popUpSaveButton.addEventListener('click', (evt) => {
-  evt.preventDefault();
-    const item = getItems({
-      name: elementName.value,
-      link: elementPlace.value
-    });
-    sectionElements.prepend(item);
-    elementName.value = ''
-    elementPlace.value = '' //здесь странности, карточка сохраняется, но не закрывается попап при применении .reset();
-    openPopup(PopUpAdd);    //планирую узнать в чате группы, может кто сталкивался
-  });                       //вообще насколько я понял, достаточно такой записи: elementName.reset();
-                            //но оно опять же не работает, попробовал еще так elementName.value.reset()
-                            //и elementName.value = elementName.reset(), все тщетно(
-
 const openPopup = (popUp) => {
   popUp.classList.toggle('popup_is-opened');
   nameInput.value = profileName.textContent;
-  jobInput.value = profileSubInfo.textContent; // в прошлом ревью видимо хотели чтобы я попрактиковался с if))
+  jobInput.value = profileSubInfo.textContent;
 }
 
 const formSubmitHandler = (evt) => {
@@ -110,16 +95,27 @@ const formSubmitHandler = (evt) => {
     openPopup(popUp);
 }
 
+const formSubmitHandlerAdd = (evt) => {
+  evt.preventDefault();
+  const item = getItems({
+    name: elementName.value,
+    link: elementPlace.value
+  });
+  sectionElements.prepend(item);
+  popUpAdd.querySelector('.form').reset(); //тут сработало обновление формы, но выше из-за submita страница обновляется, хотя не должна.
+  openPopup(popUpAdd);                     //то есть HTML-валидация у меня действительно есть,
+};
+
 renderCards();
 
-
-
 popUpPicCloseButton.addEventListener('click', () => openPopup(popUpPic));
-popUpCloseButtonAdd.addEventListener('click', () => openPopup(PopUpAdd));
-addButton.addEventListener('click', () => openPopup(PopUpAdd));
+popUpCloseButtonAdd.addEventListener('click', () => openPopup(popUpAdd));
+addButton.addEventListener('click', () => openPopup(popUpAdd));
 editButton.addEventListener('click',() => openPopup(popUp));
 popUpCloseButton.addEventListener('click',() => openPopup(popUp));
 formElement.addEventListener('submit', formSubmitHandler);
+popUpAdd.addEventListener('submit', formSubmitHandlerAdd); //для порядка создал функцию и тут обратился к ней, мне гвоорили о том, что слушатели принято располагать в самом низу
+                                                                  //так что перенес вниз, и глаза не так режет, все по полкам расставлено)
 
 
 
