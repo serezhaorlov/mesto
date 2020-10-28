@@ -102,20 +102,42 @@ const formSubmitHandlerAdd = (evt) => {
     link: elementPlace.value
   });
   sectionElements.prepend(item);
-  popUpAdd.querySelector('.form').reset(); //тут сработало обновление формы, немног обыло непонятно с сабмитом, потмоу что при нажатии сайт обновлялся,
-  openPopup(popUpAdd);                     //пофиксил путем навешивания обработчика на popUpAdd, сейчас работает корректно.
+  popUpAdd.querySelector('.form').reset();
+  openPopup(popUpAdd);
 };
+
+const popupToggleOnOverlay = (popuphimself) => {
+  popuphimself.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget){
+      openPopup(popuphimself);
+    }
+  });
+}
+
+const keyHandler = (evt) => {
+  if (evt.key === "Escape") {
+      popUp.classList.remove('popup_is-opened');
+      popUpPic.classList.remove('popup_is-opened');
+      popUpAdd.classList.remove('popup_is-opened');
+  }
+}
 
 renderCards();
 
+popupToggleOnOverlay(popUpAdd); /*не знаю как быть тут с реализацией, сначала повесил на каждый попап обработчик, но кода очень много было, сделал через функцию, вроде ок, но мне кажется можно лучше, но я не знаю как(*/
+popupToggleOnOverlay(popUp);
+popupToggleOnOverlay(popUpPic);
+
+
+document.addEventListener('keydown', keyHandler);
 popUpPicCloseButton.addEventListener('click', () => openPopup(popUpPic));
 popUpCloseButtonAdd.addEventListener('click', () => openPopup(popUpAdd));
+popUpCloseButton.addEventListener('click',() => openPopup(popUp));
 addButton.addEventListener('click', () => openPopup(popUpAdd));
 editButton.addEventListener('click',() => openPopup(popUp));
-popUpCloseButton.addEventListener('click',() => openPopup(popUp));
 formElement.addEventListener('submit', formSubmitHandler);
-popUpAdd.addEventListener('submit', formSubmitHandlerAdd); //для порядка создал функцию и тут обратился к ней, мне гвоорили о том, что слушатели принято располагать в самом низу
-                                                                  //так что перенес вниз, и глаза не так режет, все по полкам расставлено)
+popUpAdd.addEventListener('submit', formSubmitHandlerAdd);
+
 
 
 

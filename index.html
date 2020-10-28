@@ -25,19 +25,23 @@
       </ul>
     </main>
     <section class="popup">
-      <form class="form" name="form">
+      <form class="form" name="form" novalidate>
         <h2 class="form__heading">Редактировать профиль</h2>
-        <input type="text" id="name" name="name" value="" placeholder="Имя" class="form__name form__name_top">
-        <input type="text" id="comment" name="comment" value="" placeholder="О себе" class="form__name form__name_bottom">
+        <input type="text" required="" minlength="2" maxlength="40" id="name" name="name" value="" placeholder="Имя" class="form__name form__name_top">
+        <span id="name-error" class="form__error"></span>
+        <input type="text" required="" minlength="2" maxlength="200" id="comment" name="comment" value="" placeholder="О себе" class="form__name form__name_bottom">
+        <span id="comment-error" class="form__error"></span>
         <button type="submit" value="Сохранить" class="form__button ">Сохранить</button>
         <button type="button" class="form__close-button"></button>
       </form>
     </section>
     <section class="popup-add">
-      <form class="form" name="form">
+      <form class="form form-add" name="form" novalidate>
         <h2 class="form__heading">Новое место</h2>
-        <input type="text" id="name__add" name="name__add" value="" placeholder="Название" class="form__name form__name_top_add-name">
-        <input type="url" required="" id="url" name="url" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place" > <!--Валидация так же не срабатывает, я посмотрел спецификацию, но у меня карточка все ранво добавляется с пустыми полями-->
+        <input type="text" required="" minlength="2" maxlength="30" id="nameadd" name="name-add" value="" placeholder="Название" class="form__name form__name_top_add-name">
+        <span id="nameadd-error" class="form__error"></span>
+        <input type="url" required="" minlength="8"  id="url" name="url" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place" >
+        <span id="url-error" class="form__error"></span>
         <button type="submit" value="Сохранить" class="form__button form__button_add">Создать</button>
         <button type="button" class="form__close-button form__close-button_add"></button>
       </form>
@@ -63,6 +67,7 @@
       </div>
     </li>
   </template>
+  <script src="./scripts/forms.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
