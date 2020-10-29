@@ -60,6 +60,6 @@ enableValidation({
   submitButtonSelector: '.form__button',
   inactiveButtonClass: 'form__button_active',
   inputErrorClass: 'form_name_error',
-  errorClass: 'form__error' //у меня не используется этот ключ в работе, не стал передавать его в функцию hide/showErrorб там реализация попроще стоит)
+  errorClass: 'form__error'
 });
 
