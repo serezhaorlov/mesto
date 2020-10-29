@@ -14,9 +14,7 @@ const addButton = document.querySelector(".profile__add-button");
 const popUpCloseButtonAdd = document.querySelector(".form__close-button_add");
 
 const popUpPic = document.querySelector(".popup-pic");
-const popUpPicCloseButton = document.querySelector(
-  ".popup-pic__close-button-pic"
-);
+const popUpPicCloseButton = document.querySelector(".popup-pic__close-button-pic");
 
 const popUpPicImage = document.querySelector(".popup-pic__image");
 const popUpPicText = document.querySelector(".popup-pic__text");
@@ -99,6 +97,8 @@ const openPopup = (popUp) => {
   popUp.classList.add("popup_is-opened");
   nameInput.value = profileName.textContent;
   jobInput.value = profileSubInfo.textContent;
+  popUpSaveButton.classList.add("form__button_active"); //если не блокировать кнопку, появляется возможность сделать пустую карточку(
+  popUpSaveButton.disabled = true;
 };
 
 const closePopup = (popUp) => {
