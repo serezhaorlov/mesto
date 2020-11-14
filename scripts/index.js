@@ -30,17 +30,22 @@ const popUpSaveButton = document.querySelector(".form__button_add");
 
 const popups = Array.from(document.querySelectorAll(".popup"));
 
-const createCards = (item) => {
+const createCards = (item, end) => {
   const card = new Card(item, '.template', popUpPic);
-	const cardElement = card.generateCard();
-  sectionElements.append(cardElement);
+  const cardElement = card.generateCard();
+    if (end === 'prepend') {
+      sectionElements.prepend(cardElement);
+    } else {
+      sectionElements.append(cardElement);
+    }
 }
+
 
 const createSingleCard = (item) => {
   const card = new Card(item, '.template', popUpPic);
 	const cardElement = card.generateCard();
-  sectionElements.prepend(cardElement);  //я еще думаю как оптимизировать этот код, думаю, что сделаю через условие, а то по сути одно и тоже повторяется..
-}                                        // пробовал сделать условие, что если приходит массив, то юзать append, если объект prepend, но потом понял, что приходит всегда объект)))))))
+  sectionElements.prepend(cardElement);
+}
 
 initialCards.forEach(createCards);
 
@@ -82,11 +87,11 @@ const formSubmitHandler = (evt) => {
 
 const formSubmitHandlerAdd = (evt) => {
   evt.preventDefault();
-  const obj = {
-    name: elementName.value,
-    link: elementPlace.value
+  const obj = {  //вот этот
+  name: elementName.value,
+  link: elementPlace.value
   }
-  createSingleCard(obj);
+  createCards(obj, 'prepend');
   popUpAdd.querySelector(".form").reset();
   closePopup(popUpAdd);
 };

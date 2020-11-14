@@ -30,7 +30,6 @@ export class FormValidator {
 
   _checkInputValidity(input) {
     if (input.checkValidity()) {
-      console.log(input)
       this._hideError(input, input.validationMessage);
     } else {
       this._showError(input);
@@ -39,7 +38,6 @@ export class FormValidator {
 
   _setEventListeners() {
     const inputs = Array.from(this._form.querySelectorAll(this._settings.inputSelector));
-    console.log(inputs)
     const saveButton = this._form.querySelector(this._settings.submitButtonSelector);
     this._submitButtonState(this._form, saveButton);
     inputs.forEach((input) => {
