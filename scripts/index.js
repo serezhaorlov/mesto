@@ -40,13 +40,6 @@ const createCards = (item, end) => {
     }
 }
 
-
-const createSingleCard = (item) => {
-  const card = new Card(item, '.template', popUpPic);
-	const cardElement = card.generateCard();
-  sectionElements.prepend(cardElement);
-}
-
 initialCards.forEach(createCards);
 
 const openPopup = (popUp) => {
