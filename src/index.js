@@ -1,10 +1,10 @@
-console.log('Hello, World!')
-import '../styles/index.css';
-import { Card } from '../components/card.js';
-import { FormValidator } from '../pages/formValidator.js'
-import Section from '../components/section.js';
-import PopupWithForm from '../components/popupWithForm.js';
-import { UserInfo } from '../components/UserInfo.js'
+console.log('Hello, World!');
+import './index.css';
+import { Card } from './components/card.js';
+import { FormValidator } from './pages/formValidator.js';
+import Section from './components/section.js';
+import PopupWithForm from './components/popupWithForm.js';
+import { UserInfo } from './components/UserInfo.js';
 
 import {
 	initialCards,
@@ -18,7 +18,7 @@ import {
   formObj,
   nameInput,
   jobInput
-} from '../utils/constants.js'
+} from './utils/constants.js'
 
 const cardsList = new Section({
   data: initialCards.reverse(), //вроде костыль, но по-другому разобраться не выходит(
