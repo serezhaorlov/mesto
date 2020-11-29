@@ -4,16 +4,16 @@
   <title>Социальная сеть Mesto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
+    <!--<link rel="stylesheet" href="/index.css">-->
 </head>
 <body class="main-page">
   <div class="page">
     <header class="header">
-      <img src="./images/logo-image.svg" alt="логотип-место" class="header__logo">
+      <img src="<%=require('../images/logo-image.svg')%>" alt="логотип-место" class="header__logo">
     </header>
     <main class="main">
       <section class="profile">
-        <img src="./images/profile__image.jpg" alt="аватар" class="profile__avatar">
+        <img src="<%=require('../images/profile__image.jpg')%>" alt="аватар" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__sub-info">Исследователь океана</p>
@@ -48,7 +48,7 @@
   </section>
   <section class="popup popup-pic">
     <div class="popup-pic__content-container">
-      <button type="button" class="popup-pic__close-button-pic"></button>
+      <button type="button" class=" popup-pic__close-button-pic"></button>
       <img src="" alt="картинка_попап" class="popup-pic__image">
       <p class="popup-pic__text"></p>
     </div>
@@ -67,7 +67,8 @@
       </div>
     </li>
   </template>
-  <script src="./scripts/index.js" type="module"></script>
+  <!--<script src="./src/index.js" type="module"></script>-->
+
 </body>
 </html>
 

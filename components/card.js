@@ -1,9 +1,10 @@
+import PopupWithImage from '../components/popupWithImage.js';
+
 export class Card {
-	constructor(item, cardSelector, popup) {
+	constructor(item, cardSelector) {
     this._text = item.name;
     this._image = item.link;
     this._cardSelector = cardSelector;
-    this._popup = popup;
 	}
 
 	_getTemplate() {
@@ -40,9 +41,8 @@ export class Card {
   }
 
   _handleMessageClick() {
-    this._popup.querySelector('.popup-pic__image').src = this._image;
-    this._popup.querySelector('.popup-pic__text').textContent = this._text;
-    this._popup.classList.add('popup_is-opened');
+    const cardPopUp = new PopupWithImage('.popup-pic');
+    cardPopUp.open(this._image, this._text)
   }
 
   _deleteCard(){
