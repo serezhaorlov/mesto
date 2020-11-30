@@ -4,16 +4,15 @@
   <title>Социальная сеть Mesto</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="/index.css">-->
 </head>
 <body class="main-page">
   <div class="page">
     <header class="header">
-      <img src="<%=require('./images/logo-image.svg')%>" alt="логотип-место" class="header__logo">
+      <img src="<%=require('../images/logo-image.svg')%>" alt="логотип-место" class="header__logo">
     </header>
     <main class="main">
       <section class="profile">
-        <img src="<%=require('./images/profile__image.jpg')%>" alt="аватар" class="profile__avatar">
+        <img src="<%=require('../images/profile__image.jpg')%>" alt="аватар" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__sub-info">Исследователь океана</p>
@@ -25,34 +24,34 @@
       </ul>
     </main>
     <section class="popup">
-      <form class="form" name="form" novalidate>
+      <form id="form" class="form" name="form" novalidate>
+        <button id="button-close" type="button" class="form__close-button"></button>
         <h2 class="form__heading">Редактировать профиль</h2>
         <input type="text" required="" minlength="2" maxlength="40" id="name" name="name" value="" placeholder="Имя" class="form__name form__name_top">
         <span id="name-error" class="form__error"></span>
         <input type="text" required="" minlength="2" maxlength="200" id="comment" name="comment" value="" placeholder="О себе" class="form__name form__name_bottom">
         <span id="comment-error" class="form__error"></span>
-        <button type="submit" value="Сохранить" class="form__button ">Сохранить</button>
-        <button type="button" class="form__close-button"></button>
+        <button type="submit" value="Сохранить" class="form__button">Сохранить</button>
       </form>
     </section>
     <section class="popup popup-add">
       <form class="form form-add" name="form" novalidate>
         <h2 class="form__heading">Новое место</h2>
-        <input type="text" required="" minlength="2" maxlength="30" id="nameadd" name="name-add" value="" placeholder="Название" class="form__name form__name_top_add-name">
+        <input type="text" required="" minlength="2" maxlength="30" id="nameadd" name="name" value="" placeholder="Название" class="form__name form__name_top_add-name">
         <span id="nameadd-error" class="form__error"></span>
         <input type="url" required="" minlength="8"  id="url" name="url" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place" >
         <span id="url-error" class="form__error"></span>
         <button type="submit" value="Сохранить" class="form__button form__button_add">Создать</button>
-        <button type="button" class="form__close-button form__close-button_add"></button>
+        <button id="button-close" type="button" class="button form__close-button form__close-button_add"></button>
       </form>
-  </section>
-  <section class="popup popup-pic">
-    <div class="popup-pic__content-container">
-      <button type="button" class=" popup-pic__close-button-pic"></button>
-      <img src="" alt="картинка_попап" class="popup-pic__image">
-      <p class="popup-pic__text"></p>
-    </div>
-  </section>
+    </section>
+    <section class="popup popup-pic">
+      <div class="popup-pic__content-container">
+        <button id="button-close" type="button" class=" popup-pic__close-button-pic"></button>
+        <img src="" alt="картинка_попап" class="popup-pic__image">
+        <p class="popup-pic__text"></p>
+      </div>
+    </section>
     <footer class="footer">
       <p class="footer__copyright"> &copy; 2020 Mesto Russia</p>
     </footer>
@@ -67,8 +66,6 @@
       </div>
     </li>
   </template>
-  <!--<script src="./src/index.js" type="module"></script>-->
-
 </body>
 </html>
 

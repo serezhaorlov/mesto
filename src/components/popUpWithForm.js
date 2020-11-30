@@ -1,8 +1,12 @@
 import Popup from '../components/popup.js';
+import { formObj } from '../utils/constants.js';
+
+
 export default class PopUpWithForm extends Popup {
   constructor (popup, {handleFormSubmit}) {
     super(popup)
       this._selectedForm = this._popup.querySelector('.form');
+      this._saveButton = this._selectedForm.querySelector('.form__button')
       this._handleFormSubmit = handleFormSubmit;
     }
 
@@ -21,18 +25,18 @@ export default class PopUpWithForm extends Popup {
       evt.preventDefault();
       const inputData = this._getInputValues();
       this._handleFormSubmit(inputData);
-
-      this.close();
+      this.close() //здесь пока решил оставить
     });
 
     super.setEventListeners();
   }
 
   open() {
+    this._saveButton.classList.add(formObj.inactiveButtonClass); //сделал
+    this._saveButton.disabled = true;
     super.open();
-    this._saveButton.classList.add("form__button_active"); //выключаю кнопку при повторном открытии попапа, иначе будет возможности оставить поля
-    this._saveButton.disabled = true; // профиля пустыми при сохранений, делаю это в форме, потому что в общем классе если сделать, то будет ошибка
-  } // связанная с тем, что у popup-pic будет отключаться кнопка, которой там нет))
+  }
+
 
   close(){
     this._selectedForm.reset();

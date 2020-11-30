@@ -11,12 +11,13 @@ export default class Section {
     });
   }
 
-  addItem(element, end) {
-    if (end = 'prepend'){
+  addItemPrepend(element) { //поправил
       this._containerSelector.prepend(element)
-    } else if(end = 'append'){
-      this._containerSelector.append(element)
     }
+
+  addItemAppend(element) {
+      this._containerSelector.append(element)
   }
+
 }
 
