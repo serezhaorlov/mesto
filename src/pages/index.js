@@ -18,11 +18,11 @@ const formElementAdd = document.querySelector(".form-add")
 
 const sectionElements = document.querySelector(".elements");
 
-const cardBuilder = (item) => {  //я не просто так оставил лишний код при создании карточек и добавлении отдельной карточки, так как методы добавления карточек различались. у секции это был
-  const card = new Card({item, handleCardClick: () => { //addItemAppend(), у блока добавления карточки addItemPrepend(), так как в эти методы передавался cardElement,
-    const popupWithImage = new PopupWithImage('.popup-pic', popUpPicObj); //а его вытащить из функции не могу...
-    popupWithImage.open(item.name, item.url);                             //пришлось "зареверсить" массив с карточек, чтобы использовать только prepend
-    popupWithImage.setEventListeners()
+const popupWithImage = new PopupWithImage('.popup-pic', popUpPicObj);
+
+const createCard = (item) => {
+  const card = new Card({item, handleCardClick: () => {
+    popupWithImage.open(item.name, item.url);
     }
   }, '.template');
   const cardElement = card.generateCard();
@@ -33,7 +33,7 @@ const cardBuilder = (item) => {  //я не просто так оставил л
 const cardsList = new Section({
   data: initialCards.reverse(), //this
   renderer: (item) => {
-    cardBuilder(item);
+    createCard(item);
   }
 },
   sectionElements
@@ -53,7 +53,7 @@ const popupWithFormProfile = new PopupWithForm('.popup',
 
 const popupWithFormAdd = new PopupWithForm('.popup-add',
   {handleFormSubmit: (item) => {
-    cardBuilder(item);
+    createCard(item);
   }
 });
 
@@ -65,12 +65,13 @@ cardsList.renderItems();
 formValidator.enableValidation();
 formValidatorAdd.enableValidation();
 
+popupWithImage.setEventListeners() //поправил
 popupWithFormProfile.setEventListeners();
 popupWithFormAdd.setEventListeners();
 
 
 const openProfilePopup = () => {
-  const userProfileInfo = userInfo.getUserInfo() //поправил)
+  const userProfileInfo = userInfo.getUserInfo()
   nameInput.value = userProfileInfo.name;
   jobInput.value = userProfileInfo.comment;
   popupWithFormProfile.open();
