@@ -18,18 +18,22 @@ const formElementAdd = document.querySelector(".form-add")
 
 const sectionElements = document.querySelector(".elements");
 
-const cardsList = new Section({
-  data: initialCards,
-  renderer: (item) => {
-    const card = new Card({item, handleCardClick: () => {
-      const popupWithImage = new PopupWithImage('.popup-pic', popUpPicObj);
-      popupWithImage.open(item.name, item.url);
-      popupWithImage.setEventListeners()
-      }
-    }, '.template');
-    const cardElement = card.generateCard();
+const cardBuilder = (item) => {  //я не просто так оставил лишний код при создании карточек и добавлении отдельной карточки, так как методы добавления карточек различались. у секции это был
+  const card = new Card({item, handleCardClick: () => { //addItemAppend(), у блока добавления карточки addItemPrepend(), так как в эти методы передавался cardElement,
+    const popupWithImage = new PopupWithImage('.popup-pic', popUpPicObj); //а его вытащить из функции не могу...
+    popupWithImage.open(item.name, item.url);                             //пришлось "зареверсить" массив с карточек, чтобы использовать только prepend
+    popupWithImage.setEventListeners()
+    }
+  }, '.template');
+  const cardElement = card.generateCard();
+  cardsList.addItemPrepend(cardElement);
 
-    cardsList.addItemAppend(cardElement);
+}
+
+const cardsList = new Section({
+  data: initialCards.reverse(), //this
+  renderer: (item) => {
+    cardBuilder(item);
   }
 },
   sectionElements
@@ -46,18 +50,10 @@ const popupWithFormProfile = new PopupWithForm('.popup',
   }}
 );
 
+
 const popupWithFormAdd = new PopupWithForm('.popup-add',
   {handleFormSubmit: (item) => {
-    const card = new Card({item, handleCardClick: () => {
-        const popupWithImage = new PopupWithImage('.popup-pic', popUpPicObj);
-        popupWithImage.open(item.name, item.url);
-        popupWithImage.setEventListeners()
-      }
-    }, '.template');
-    const cardElement = card.generateCard();
-
-    cardsList.addItemPrepend(cardElement);
-
+    cardBuilder(item);
   }
 });
 
@@ -73,14 +69,14 @@ popupWithFormProfile.setEventListeners();
 popupWithFormAdd.setEventListeners();
 
 
-const PopupWithProfileFormIsOpened = () => {
-  const UserProfileInfo = userInfo.getUserInfo()
-  nameInput.value = UserProfileInfo.name; //добавил константу с селектором верхнего и нижнего полей из constants и присвоил им значения
-  jobInput.value = UserProfileInfo.comment;  //возвращаемого getUserInfo() объектов
+const openProfilePopup = () => {
+  const userProfileInfo = userInfo.getUserInfo() //поправил)
+  nameInput.value = userProfileInfo.name;
+  jobInput.value = userProfileInfo.comment;
   popupWithFormProfile.open();
 }
 
-editButton.addEventListener('click', () => PopupWithProfileFormIsOpened());
+editButton.addEventListener('click', () => openProfilePopup());
 addButton.addEventListener('click', () => popupWithFormAdd.open());
 
 
