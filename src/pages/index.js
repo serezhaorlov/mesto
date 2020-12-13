@@ -122,14 +122,14 @@ const popupWithFormProfile = new PopupWithForm('.popup',
 
 const popupProfileEditAvatar = new PopupWithForm('.popup-profile',
     {handleFormSubmit: (inputData) => {
-      renderLoading(true) //функиция срабатывает, но кнопка "Сохранить" не убирается, а кнопка "Сохранить..." не показывается
+      renderLoading(true)
       api.changeUserPic(inputData.avatar)
         .then((res) => {
           userInfo.setUserPic(res);
         })
         .catch(err => console.error(err))
         .finally(() =>{
-          renderLoading(false);//не работает
+          renderLoading(false);
           popupProfileEditAvatar.close();
         })
     }
@@ -137,7 +137,7 @@ const popupProfileEditAvatar = new PopupWithForm('.popup-profile',
 
 const popupWithFormAdd = new PopupWithForm('.popup-add',
   {handleFormSubmit: (data) => {
-    renderLoading(true) //функиция срабатывает, но кнопка "Сохранить" не убирается, а кнопка "Сохранить..." не показывается
+    renderLoading(true)
     api.addCard(data)
       .then(cardData => {
         createCard(cardData, userDataFromServer);
