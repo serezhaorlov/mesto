@@ -82,7 +82,12 @@ export class Api {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-18/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
-    })
+    }).then((res) => {
+      if (res.ok) {
+        return res.json()
+      }
+      return Promise.reject("Mistakes there made")
+      })
   }
 
   likeCard(cardId){
@@ -93,7 +98,7 @@ export class Api {
       if (res.ok) {
         return res.json()
       }
-      return Promise.reject("shit happends")
+      return Promise.reject("Mistakes there made")
       })
   }
 
