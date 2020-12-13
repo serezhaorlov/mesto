@@ -38,7 +38,23 @@ export const formObj = {
   inactiveButtonClass: 'form__button_active',
   inputErrorClass: 'form_name_error',
   formCloseButton: '.form__close-button',
-  buttonClose: '#button-close'
+  buttonClose: '#button-close',
+  submitButtonLoading: '.form__button_loading'
+}
+
+export const userObject = {
+  userPic: ".profile__avatar",
+  userName: ".profile__name",
+  userInfo: ".profile__sub-info",
+}
+
+export const apiObj = {
+  cardsUrl: 'https://mesto.nomoreparties.co/v1/cohort-18/cards', //вынести в объект и подключить через константы
+  headers: {
+    'authorization': '265b2265-ae2c-4200-8a02-8c26528e2a21',
+    "content-type": "application/json"
+  },
+  myProfileUrl: 'https://mesto.nomoreparties.co/v1/cohort-18/users/me',
 }
 
 export const popUpPicObj = {

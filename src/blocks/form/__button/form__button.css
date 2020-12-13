@@ -1,4 +1,7 @@
 .form__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 358px;
   min-height: 50px;
   -ms-flex-item-align: center;

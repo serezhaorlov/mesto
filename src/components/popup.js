@@ -1,4 +1,4 @@
-import { ESC_KEY, formObj, popUpPicObj } from "../utils/constants.js"
+import { ESC_KEY, formObj } from "../utils/constants.js"
 
 export default class Popup {
   constructor (popup) {

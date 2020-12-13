@@ -1,19 +1,24 @@
 export class UserInfo {
-  constructor({userName, userInfo}){
+  constructor({userName, userInfo, userPic}){
     this._name = document.querySelector(userName);
     this._info = document.querySelector(userInfo);
+    this._pic = document.querySelector(userPic);
   }
 
   getUserInfo(){
-    return { //поправил,спасибо!
+    return {
       name: this._name.textContent,
-      comment: this._info.textContent
+      about: this._info.textContent
     };
 
   }
 
-  setUserInfo(inputData){
-    this._name.textContent = inputData.name;
-    this._info.textContent = inputData.comment;
+  setUserInfo(data){
+    this._name.textContent = data.name;
+    this._info.textContent = data.about;
+  }
+
+  setUserPic(inputData) {
+    this._pic.src = inputData.avatar;
   }
 }

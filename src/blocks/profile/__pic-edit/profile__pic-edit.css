@@ -1,0 +1,22 @@
+.profile__pic-edit { /**/
+  position: absolute;
+  top: 50px;
+  left: 42px;
+  padding: 20px;
+  background-image: url(../../../images/buttonEditAvatar.svg);
+  background-position: center;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  background-repeat: no-repeat;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__pic-edit {
+    background-position: bottom;
+    top: 35px;
+    left: auto;
+  }
+}
+

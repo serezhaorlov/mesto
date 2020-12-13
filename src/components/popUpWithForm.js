@@ -24,8 +24,7 @@ export default class PopUpWithForm extends Popup {
     this._selectedForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
       const inputData = this._getInputValues();
-      this._handleFormSubmit(inputData);
-      this.close() //здесь пока решил оставить
+      this._handleFormSubmit(inputData)
     });
 
     super.setEventListeners();
@@ -34,6 +33,7 @@ export default class PopUpWithForm extends Popup {
   open() {
     this._saveButton.classList.add(formObj.inactiveButtonClass); //сделал
     this._saveButton.disabled = true;
+
     super.open();
   }
 
