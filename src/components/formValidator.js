@@ -65,6 +65,18 @@ export class FormValidator {
       this._setEventListeners(this._settings);
     };
 
+    submitButtonBlockState(state) {
+      if (state) {
+        const stateActive = this._form.querySelector(this._settings.submitButtonSelector);
+        stateActive.classList.remove(this._settings.inactiveButtonClass);
+        stateActive.disabled = false;
+      } else {
+        const stateActive = this._form.querySelector(this._settings.submitButtonSelector);
+        stateActive.classList.add(this._settings.inactiveButtonClass);
+        stateActive.disabled = true;
+      }
+
+    }
 
 }
 

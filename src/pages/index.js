@@ -34,9 +34,10 @@ const promises = [cards,myProfile]
 Promise.all(promises) //теперь все вроде ок
 .then(res => {
   userDataFromServer = res[1];
+
+  cardsSectionRender.renderItems(res[0].reverse())
   userInfo.setUserInfo(res[1]);
   userInfo.setUserPic(res[1]);
-  cardsSectionRender.renderItems(res[0].reverse())
 })
 
 const cardsSectionRender = new Section({
@@ -152,19 +153,20 @@ const openProfilePopup = () => {
   nameInput.value = userProfileInfo.name;
   jobInput.value = userProfileInfo.about;
   popupWithFormProfile.open();
-  formValidator.hideErrors() //Fixed
-  toggleButtonState(true)
+  formValidator.hideErrors();
+  formValidator.submitButtonBlockState(true) //this
 }
 
 const openCardAddProfile = () => {
-  popupWithFormAdd.open()
-  formValidatorAdd.hideErrors()
-
+  popupWithFormAdd.open();
+  formValidatorAdd.hideErrors();
+  formValidatorAdd.submitButtonBlockState(false)
 }
 
 const openAvatarPopup = () => {
-  popupProfileEditAvatar.open()
-  formValidatorProfile.hideErrors()
+  popupProfileEditAvatar.open();
+  formValidatorProfile.hideErrors();
+  formValidatorProfile.submitButtonBlockState(false)
 }
 
 avatarChangeButton.addEventListener('click', () =>openAvatarPopup())

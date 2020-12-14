@@ -42,7 +42,7 @@ export default class Popup {
       this._submitPreLoad.classList.add('form__button_is-hidden');  //почему-то мне показалось, что лезть с этим в класс не лучший выход
     } else {
       this._submitLoad.classList.remove('form__button_loading_is-active');
-      this._submitLoad.classList.remove('form__button_is-hidden');
+      this._submitPreLoad.classList.remove('form__button_is-hidden');
     }
   }
 

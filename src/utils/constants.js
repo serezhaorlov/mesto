@@ -37,13 +37,6 @@ export const popupProfile = ".popup-profile";
 export const popupPic = ".popup-pic";
 export const popupDelete = ".popup-delete";
 
-export const toggleButtonState = (state) => { //done
-  if (state) {
-    const submitButton = document.querySelector('.form__button')
-    submitButton.classList.remove(formObj.inactiveButtonClass);
-    submitButton.disabled = false;
-  }
-}
 
 
 
