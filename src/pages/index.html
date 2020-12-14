@@ -31,8 +31,8 @@
         <span id="name-error" class="form__error"></span>
         <input type="text" required="" minlength="2" maxlength="200" id="about" name="about" value="" placeholder="О себе" class="form__name form__name_bottom">
         <span id="about-error" class="form__error"></span>
-        <button type="submit" value="Сохранить" class="form__button ">Сохранить</button>
-        <button type="submit" value="Сохранить" class="form__button form__button_loading">Сохранение...</button>
+        <button type="submit" id="submit-button" value="Сохранить" class="form__button ">Сохранить</button>
+        <button type="submit" id="submit-button-active" value="Сохранить" class="form__button form__button_loading">Сохранение...</button>
         <button id="button-close" type="button" class="form__close-button"></button>
       </form>
     </section>
@@ -43,8 +43,8 @@
         <span id="nameadd-error" class="form__error"></span>
         <input type="url" required="" minlength="8"  id="url" name="url" value="" placeholder="Ссылка на картинку" class="form__name form__name_bottom_add-place" >
         <span id="url-error" class="form__error"></span>
-        <button type="submit" value="Сохранить" class="form__button form__button_add">Создать</button>
-        <button type="submit" value="Сохранить" class="form__button form__button_loading">Сохранение...</button>
+        <button type="submit" id="submit-button" value="Сохранить" class="form__button form__button_add">Создать</button>
+        <button type="submit" id="submit-button-active" value="Сохранить" class="form__button form__button_loading">Сохранение...</button>
         <button id="button-close" type="button" class="form__close-button form__close-button_add"></button>
       </form>
     </section>
@@ -53,8 +53,8 @@
         <h2 class="form__heading form__heading_profile">Обновить аватар</h2>
         <input type="url" required="" minlength="8" id="url" name="avatar" value="" placeholder="Введите ссылку" class="form__name form__name_profile">
         <span id="url-error" class="form__error"></span>
-        <button type="submit" value="Сохранить" class="form__button form__button_profile">Сохранить</button>
-        <button type="submit" value="Сохранить" class="form__button form__button_loading">Сохранение...</button>
+        <button type="submit" id="submit-button" value="Сохранить" class="form__button form__button_profile">Сохранить</button>
+        <button type="submit" id="submit-button-active" value="Сохранить" class="form__button form__button_loading">Сохранение...</button>
 
         <button id="button-close" type="button" class="form__close-button form__close-button_profile"></button>
       </form>
@@ -79,7 +79,7 @@
   </div>
   <template class="template">
     <li class="elements__item">
-      <img src="" alt="картинка_места" class="elements__pic">
+      <img src="" alt="" class="elements__pic">
       <button type="button" class="elements__delete-button"></button>
       <div class="elements__container">
         <h2 class="elements__place-name"></h2>

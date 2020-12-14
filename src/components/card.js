@@ -13,7 +13,6 @@ export class Card {
     this._user = user;
     this._userId = user._id;
     this._likesId = item.likes._id
-    console.log(this._userId)
 	}
 
 	_getTemplate() {

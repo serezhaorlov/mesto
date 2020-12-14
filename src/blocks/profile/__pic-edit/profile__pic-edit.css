@@ -1,6 +1,6 @@
 .profile__pic-edit { /**/
   position: absolute;
-  top: 50px;
+  top: 40px;
   left: 42px;
   padding: 20px;
   background-image: url(../../../images/buttonEditAvatar.svg);

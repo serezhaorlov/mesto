@@ -6,7 +6,8 @@ import PopupWithForm from '../components/popupWithForm.js';
 import PopupWithImage from '../components/popupWithImage.js';
 import PopupWithSubmit from '../components/popupWithSubmit.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { formObj, popUpPicObj, userObject, apiObj } from '../utils/constants.js';
+import { formObj, popUpPicObj, userObject, apiObj, template,
+	popup, popupAdd, popupProfile, popupPic, popupDelete, toggleButtonState } from '../utils/constants.js';
 import { Api } from '../components/api';
 
 const editButton = document.querySelector(".profile__edit-button");
@@ -22,44 +23,21 @@ const formProfile = document.querySelector(".form-profile");
 
 const sectionElements = document.querySelector(".elements");
 
-const submitButtonThenLoading = document.querySelectorAll('.form__button_loading')
-const submitButtonCommon = document.querySelectorAll('.form__button')
-
-const renderLoading = (isLoading) => {
-  if (isLoading) {
-    submitButtonThenLoading.forEach((button) => {
-      button.classList.add('form__button_loading_is-active');
-    })
-    submitButtonCommon.forEach((button) => {
-      button.classList.add('form__button_is-hidden');
-    })
-  } else {
-    submitButtonThenLoading.forEach((button) => {
-      button.classList.remove('form__button_loading_is-active');
-    })
-    submitButtonCommon.forEach((button) => {
-      button.classList.remove('form__button_is-hidden');
-    })
-  }
-}
-
 const api = new Api(apiObj);
 
-api.getCards() //promise.all?
-  .then((item) => {
-    cardsSectionRender.renderItems(item.reverse());
-  })
-  .catch(err => console.error(err))
-
+const cards = api.getCards()
+const myProfile =api.getUser()
 let userDataFromServer = null;
 
-api.getUser()
-  .then(res => {
-    userDataFromServer = res;
-    userInfo.setUserInfo(res);
-    userInfo.setUserPic(res)
-  })
-  .catch(err => console.error(err))
+const promises = [cards,myProfile]
+
+Promise.all(promises) //теперь все вроде ок
+.then(res => {
+  userDataFromServer = res[1];
+  userInfo.setUserInfo(res[1]);
+  userInfo.setUserPic(res[1]);
+  cardsSectionRender.renderItems(res[0].reverse())
+})
 
 const cardsSectionRender = new Section({
   renderer: (item) => {
@@ -70,6 +48,7 @@ const cardsSectionRender = new Section({
 );
 
 const createCard = (item, user) => {
+
   const card = new Card({
     item,
     user,
@@ -98,61 +77,61 @@ const createCard = (item, user) => {
         .catch(err => console.error(err))
     },
 
-  }, '.template');
+  }, template);
   const cardElement = card.generateCard();
-  cardsSectionRender.addItemPrepend(cardElement);
+  cardsSectionRender.addItem(cardElement);
 }
 
 const userInfo = new UserInfo(userObject);
 
-const popupWithFormProfile = new PopupWithForm('.popup',
+const popupWithFormProfile = new PopupWithForm(popup,
   {handleFormSubmit: (inputData) => {
-    renderLoading(true) //работает
+    popupWithFormProfile.renderLoading(true)
     api.editProfile(inputData)
       .then((data) => {
         userInfo.setUserInfo(data);
       })
       .catch(err => console.error(err))
       .finally(() => {
-        renderLoading(false) //работает
+        popupWithFormProfile.renderLoading(false)
         popupWithFormProfile.close()
       })
   }}
 );
 
-const popupProfileEditAvatar = new PopupWithForm('.popup-profile',
+const popupProfileEditAvatar = new PopupWithForm(popupProfile,
     {handleFormSubmit: (inputData) => {
-      renderLoading(true)
+      popupProfileEditAvatar.renderLoading(true)
       api.changeUserPic(inputData.avatar)
         .then((res) => {
           userInfo.setUserPic(res);
         })
         .catch(err => console.error(err))
         .finally(() =>{
-          renderLoading(false);
+          popupProfileEditAvatar.renderLoading(false);
           popupProfileEditAvatar.close();
         })
     }
 });
 
-const popupWithFormAdd = new PopupWithForm('.popup-add',
+const popupWithFormAdd = new PopupWithForm(popupAdd,
   {handleFormSubmit: (data) => {
-    renderLoading(true)
+    popupWithFormAdd.renderLoading(true)
     api.addCard(data)
       .then(cardData => {
         createCard(cardData, userDataFromServer);
       })
       .catch(err => console.error(err))
       .finally(() => {
-        renderLoading(false)
+        popupWithFormAdd.renderLoading(false)
         popupWithFormAdd.close();
       })
   }
 });
 
-const popupWithImage = new PopupWithImage('.popup-pic', popUpPicObj);
+const popupWithImage = new PopupWithImage(popupPic, popUpPicObj);
 
-const popupWithSubmit = new PopupWithSubmit('.popup-delete')
+const popupWithSubmit = new PopupWithSubmit(popupDelete)
 
 const formValidator = new FormValidator(formObj, formElement);
 const formValidatorAdd = new FormValidator(formObj, formElementAdd);
@@ -173,10 +152,23 @@ const openProfilePopup = () => {
   nameInput.value = userProfileInfo.name;
   jobInput.value = userProfileInfo.about;
   popupWithFormProfile.open();
+  formValidator.hideErrors() //Fixed
+  toggleButtonState(true)
 }
 
-avatarChangeButton.addEventListener('click', () => popupProfileEditAvatar.open())
+const openCardAddProfile = () => {
+  popupWithFormAdd.open()
+  formValidatorAdd.hideErrors()
+
+}
+
+const openAvatarPopup = () => {
+  popupProfileEditAvatar.open()
+  formValidatorProfile.hideErrors()
+}
+
+avatarChangeButton.addEventListener('click', () =>openAvatarPopup())
 editButton.addEventListener('click', () => openProfilePopup());
-addButton.addEventListener('click', () => popupWithFormAdd.open());
+addButton.addEventListener('click', () => openCardAddProfile());
 
 

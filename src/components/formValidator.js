@@ -2,7 +2,15 @@ export class FormValidator {
   constructor(settings, form) {
     this._form = form;
     this._input = this._form.querySelector(settings.inputSelector)
+    this._inputs = this._form.querySelectorAll(settings.inputSelector)
+
     this._settings = settings;
+  }
+
+  hideErrors() {
+    this._inputs.forEach(item => {
+          this._hideError(item);
+      })
   }
 
   _hideError(input) {
@@ -56,5 +64,7 @@ export class FormValidator {
 
       this._setEventListeners(this._settings);
     };
+
+
 }
 

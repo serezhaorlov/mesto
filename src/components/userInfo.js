@@ -8,17 +8,25 @@ export class UserInfo {
   getUserInfo(){
     return {
       name: this._name.textContent,
-      about: this._info.textContent
+      about: this._info.textContent,
+      avatar: this._pic.scr //поправил
     };
-
   }
 
   setUserInfo(data){
-    this._name.textContent = data.name;
-    this._info.textContent = data.about;
+    if (data.name){
+      this._name.textContent = data.name;
+    }
+    if (data.about) {
+      this._info.textContent = data.about;
+    }
   }
 
   setUserPic(inputData) {
-    this._pic.src = inputData.avatar;
+    if (inputData.avatar) {
+      this._pic.src = inputData.avatar;
+    } else {
+      console.log('error')
+    }
   }
 }

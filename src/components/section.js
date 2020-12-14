@@ -10,13 +10,10 @@ export default class Section {
     });
   }
 
-  addItemPrepend(element) { //поправил
+  addItem(element) { //поправил
       this._containerSelector.prepend(element)
     }
 
-  /*addItemAppend(element) {
-      this._containerSelector.append(element)
-  }*/
 
 }
 

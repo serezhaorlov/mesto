@@ -30,12 +30,6 @@ export default class PopUpWithForm extends Popup {
     super.setEventListeners();
   }
 
-  open() {
-    this._saveButton.classList.add(formObj.inactiveButtonClass); //сделал
-    this._saveButton.disabled = true;
-
-    super.open();
-  }
 
 
   close(){
