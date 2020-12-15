@@ -1,5 +1,4 @@
 import Popup from '../components/popup.js';
-import { formObj } from '../utils/constants.js';
 
 
 export default class PopUpWithForm extends Popup {
@@ -10,7 +9,7 @@ export default class PopUpWithForm extends Popup {
       this._handleFormSubmit = handleFormSubmit;
     }
 
-  _getInputValues() {
+    _getInputValues() {
     this._inputList = this._selectedForm.querySelectorAll('.form__name');
     this._formValues = {};
     this._inputList.forEach(input => {
@@ -29,8 +28,6 @@ export default class PopUpWithForm extends Popup {
 
     super.setEventListeners();
   }
-
-
 
   close(){
     this._selectedForm.reset();

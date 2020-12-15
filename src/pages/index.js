@@ -7,8 +7,9 @@ import PopupWithImage from '../components/popupWithImage.js';
 import PopupWithSubmit from '../components/popupWithSubmit.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { formObj, popUpPicObj, userObject, apiObj, template,
-	popup, popupAdd, popupProfile, popupPic, popupDelete, toggleButtonState } from '../utils/constants.js';
+	popup, popupAdd, popupProfile, popupPic, popupDelete } from '../utils/constants.js';
 import { Api } from '../components/api';
+import { loadingButtonState } from '../utils/utils.js';
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -87,14 +88,14 @@ const userInfo = new UserInfo(userObject);
 
 const popupWithFormProfile = new PopupWithForm(popup,
   {handleFormSubmit: (inputData) => {
-    popupWithFormProfile.renderLoading(true)
+    loadingButtonState(true)
     api.editProfile(inputData)
       .then((data) => {
         userInfo.setUserInfo(data);
       })
       .catch(err => console.error(err))
       .finally(() => {
-        popupWithFormProfile.renderLoading(false)
+        loadingButtonState(false);
         popupWithFormProfile.close()
       })
   }}
@@ -102,14 +103,14 @@ const popupWithFormProfile = new PopupWithForm(popup,
 
 const popupProfileEditAvatar = new PopupWithForm(popupProfile,
     {handleFormSubmit: (inputData) => {
-      popupProfileEditAvatar.renderLoading(true)
+      loadingButtonState(true)
       api.changeUserPic(inputData.avatar)
         .then((res) => {
           userInfo.setUserPic(res);
         })
         .catch(err => console.error(err))
         .finally(() =>{
-          popupProfileEditAvatar.renderLoading(false);
+          loadingButtonState(false);
           popupProfileEditAvatar.close();
         })
     }
@@ -117,14 +118,14 @@ const popupProfileEditAvatar = new PopupWithForm(popupProfile,
 
 const popupWithFormAdd = new PopupWithForm(popupAdd,
   {handleFormSubmit: (data) => {
-    popupWithFormAdd.renderLoading(true)
+    loadingButtonState(true)
     api.addCard(data)
       .then(cardData => {
         createCard(cardData, userDataFromServer);
       })
       .catch(err => console.error(err))
       .finally(() => {
-        popupWithFormAdd.renderLoading(false)
+        loadingButtonState(false);
         popupWithFormAdd.close();
       })
   }
@@ -149,12 +150,12 @@ popupProfileEditAvatar.setEventListeners();
 popupWithSubmit.setEventListeners();
 
 const openProfilePopup = () => {
-  const userProfileInfo = userInfo.getUserInfo() //подтягивать данные с сервера
+  const userProfileInfo = userInfo.getUserInfo()
   nameInput.value = userProfileInfo.name;
   jobInput.value = userProfileInfo.about;
   popupWithFormProfile.open();
   formValidator.hideErrors();
-  formValidator.submitButtonBlockState(true) //this
+  formValidator.submitButtonBlockState(true)
 }
 
 const openCardAddProfile = () => {

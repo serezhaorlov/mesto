@@ -30,7 +30,7 @@ export const popUpPicObj = {
 
 export const ESC_KEY = "Escape"
 
-export const template = ".template"; //так как мне надо передать строку везде, я правильно понял задачу по устранению хардкода?))
+export const template = ".template";
 export const popup = ".popup";
 export const popupAdd = ".popup-add";
 export const popupProfile = ".popup-profile";

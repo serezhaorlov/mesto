@@ -7,12 +7,6 @@ export class FormValidator {
     this._settings = settings;
   }
 
-  hideErrors() {
-    this._inputs.forEach(item => {
-          this._hideError(item);
-      })
-  }
-
   _hideError(input) {
     const errorElement = this._form.querySelector(`#${input.id}-error`);
     this._input.classList.remove(this._settings.inputErrorClass);
@@ -54,7 +48,6 @@ export class FormValidator {
         this._submitButtonState(saveButton);
       });
     });
-
   }
 
   enableValidation() {
@@ -65,7 +58,7 @@ export class FormValidator {
       this._setEventListeners(this._settings);
     };
 
-    submitButtonBlockState(state) {
+    submitButtonBlockState(state) { //утащил все в класс валидации после обсуждения с куратором
       if (state) {
         const stateActive = this._form.querySelector(this._settings.submitButtonSelector);
         stateActive.classList.remove(this._settings.inactiveButtonClass);
@@ -75,7 +68,12 @@ export class FormValidator {
         stateActive.classList.add(this._settings.inactiveButtonClass);
         stateActive.disabled = true;
       }
+    }
 
+    hideErrors() {
+      this._inputs.forEach(item => {
+            this._hideError(item);
+        })
     }
 
 }
